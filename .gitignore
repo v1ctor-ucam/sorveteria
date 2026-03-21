@@ -1,0 +1,23 @@
+# .NET
+**/bin/
+**/obj/
+.vs/
+
+# Node / Angular
+**/node_modules/
+dist/
+
+# IDEs
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Ambiente
+.env
+.env.*
+
+# Sistema
+Thumbs.db
+.DS_Store

@@ -1,0 +1,114 @@
+CREATE DATABASE IF NOT EXISTS sorveteria_fideliza;
+USE sorveteria_fideliza;
+
+CREATE TABLE IF NOT EXISTS Customers (
+  Id CHAR(36) NOT NULL PRIMARY KEY,
+  FullName VARCHAR(140) NOT NULL,
+  Email VARCHAR(160) NOT NULL UNIQUE,
+  Phone VARCHAR(20) NOT NULL UNIQUE,
+  PasswordHash VARCHAR(255) NOT NULL,
+  IsActive TINYINT(1) NOT NULL DEFAULT 1,
+  PointsBalance INT NOT NULL DEFAULT 0,
+  CreatedAtUtc DATETIME NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Employees (
+  Id CHAR(36) NOT NULL PRIMARY KEY,
+  Name VARCHAR(140) NOT NULL,
+  Email VARCHAR(160) NOT NULL UNIQUE,
+  PasswordHash VARCHAR(255) NOT NULL,
+  Role INT NOT NULL,
+  IsActive TINYINT(1) NOT NULL DEFAULT 1,
+  CreatedAtUtc DATETIME NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Products (
+  Id CHAR(36) NOT NULL PRIMARY KEY,
+  Name VARCHAR(120) NOT NULL,
+  Category VARCHAR(40) NOT NULL,
+  Description TEXT NULL,
+  IsActive TINYINT(1) NOT NULL DEFAULT 1,
+  CountsForCampaign TINYINT(1) NOT NULL DEFAULT 1,
+  BasePoints INT NOT NULL,
+  UnitPrice DECIMAL(10,2) NOT NULL,
+  CreatedAtUtc DATETIME NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS RewardDefinitions (
+  Id CHAR(36) NOT NULL PRIMARY KEY,
+  Name VARCHAR(120) NOT NULL,
+  Description TEXT NULL,
+  CostPoints INT NOT NULL,
+  IsActive TINYINT(1) NOT NULL DEFAULT 1,
+  CreatedAtUtc DATETIME NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS CampaignRules (
+  Id CHAR(36) NOT NULL PRIMARY KEY,
+  Name VARCHAR(120) NOT NULL,
+  Description TEXT NULL,
+  RuleType INT NOT NULL,
+  Category VARCHAR(40) NULL,
+  RequiredQuantity INT NOT NULL DEFAULT 0,
+  RequiredPoints INT NOT NULL DEFAULT 0,
+  BonusPoints INT NOT NULL DEFAULT 0,
+  RewardName VARCHAR(120) NOT NULL,
+  IsActive TINYINT(1) NOT NULL DEFAULT 1,
+  CreatedAtUtc DATETIME NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Sales (
+  Id CHAR(36) NOT NULL PRIMARY KEY,
+  EmployeeId CHAR(36) NOT NULL,
+  CustomerId CHAR(36) NULL,
+  TotalAmount DECIMAL(10,2) NULL,
+  Status INT NOT NULL,
+  CreatedAtUtc DATETIME NOT NULL,
+  ExpiresAtUtc DATETIME NOT NULL,
+  LinkedAtUtc DATETIME NULL,
+  QrToken VARCHAR(120) NOT NULL UNIQUE,
+  LinkIpAddress VARCHAR(48) NULL,
+  CONSTRAINT FK_Sales_Employee FOREIGN KEY (EmployeeId) REFERENCES Employees(Id),
+  CONSTRAINT FK_Sales_Customer FOREIGN KEY (CustomerId) REFERENCES Customers(Id)
+);
+
+CREATE TABLE IF NOT EXISTS SaleItems (
+  Id CHAR(36) NOT NULL PRIMARY KEY,
+  SaleId CHAR(36) NOT NULL,
+  ProductId CHAR(36) NOT NULL,
+  Quantity INT NOT NULL,
+  ItemPoints INT NOT NULL,
+  UnitPriceSnapshot DECIMAL(10,2) NOT NULL,
+  CONSTRAINT FK_SaleItems_Sale FOREIGN KEY (SaleId) REFERENCES Sales(Id),
+  CONSTRAINT FK_SaleItems_Product FOREIGN KEY (ProductId) REFERENCES Products(Id)
+);
+
+CREATE TABLE IF NOT EXISTS LoyaltyTransactions (
+  Id CHAR(36) NOT NULL PRIMARY KEY,
+  CustomerId CHAR(36) NOT NULL,
+  SaleId CHAR(36) NULL,
+  CampaignRuleId CHAR(36) NULL,
+  Points INT NOT NULL,
+  Type INT NOT NULL,
+  Description VARCHAR(255) NOT NULL,
+  CreatedAtUtc DATETIME NOT NULL,
+  CONSTRAINT FK_LoyaltyTransactions_Customer FOREIGN KEY (CustomerId) REFERENCES Customers(Id),
+  CONSTRAINT FK_LoyaltyTransactions_Sale FOREIGN KEY (SaleId) REFERENCES Sales(Id),
+  CONSTRAINT FK_LoyaltyTransactions_CampaignRule FOREIGN KEY (CampaignRuleId) REFERENCES CampaignRules(Id)
+);
+
+CREATE TABLE IF NOT EXISTS RewardRedemptions (
+  Id CHAR(36) NOT NULL PRIMARY KEY,
+  CustomerId CHAR(36) NOT NULL,
+  RewardDefinitionId CHAR(36) NULL,
+  CampaignRuleId CHAR(36) NULL,
+  RewardName VARCHAR(120) NOT NULL,
+  CostPoints INT NOT NULL,
+  IsUsed TINYINT(1) NOT NULL DEFAULT 0,
+  GrantedReason VARCHAR(255) NULL,
+  CreatedAtUtc DATETIME NOT NULL,
+  UsedAtUtc DATETIME NULL,
+  CONSTRAINT FK_RewardRedemptions_Customer FOREIGN KEY (CustomerId) REFERENCES Customers(Id),
+  CONSTRAINT FK_RewardRedemptions_RewardDefinition FOREIGN KEY (RewardDefinitionId) REFERENCES RewardDefinitions(Id),
+  CONSTRAINT FK_RewardRedemptions_CampaignRule FOREIGN KEY (CampaignRuleId) REFERENCES CampaignRules(Id)
+);

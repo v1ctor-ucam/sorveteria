@@ -1,0 +1,23 @@
+<div class="layout">
+  <header class="topbar">
+    <a routerLink="/" class="brand">+Açaí Sabor</a>
+    <div class="topbar-actions">
+      <nav class="menu">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+        <a routerLink="/admin" routerLinkActive="active">Painel Admin</a>
+        <a routerLink="/cliente" routerLinkActive="active">Area Cliente</a>
+      </nav>
+
+      @if (authService.isLoggedIn()) {
+        <div class="session-chip">
+          <span>Perfil: {{ authService.role() }}</span>
+          <button type="button" (click)="logout()">Sair</button>
+        </div>
+      }
+    </div>
+  </header>
+
+  <main class="content">
+    <router-outlet />
+  </main>
+</div>

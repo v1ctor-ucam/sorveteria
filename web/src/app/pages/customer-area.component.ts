@@ -25,26 +25,36 @@ import { AuthService } from '../core/auth.service';
       <p>Cadastro, login, leitura de QR, historico, perfil, progresso e recompensas.</p>
 
       @if (!isCustomerSession()) {
-        <div class="layout-grid">
+        <div class="auth-center" style="max-width: 450px; margin: 0 auto; padding-top: 2rem;">
           <div class="card">
             <h2>Entrar</h2>
             <div class="field-grid two">
               <label>E-mail ou telefone<input [(ngModel)]="login" type="text" placeholder="cliente@teste.com" /></label>
               <label>Senha<input [(ngModel)]="password" type="password" placeholder="Teste@123" /></label>
             </div>
-            <button type="button" (click)="doLogin()" [disabled]="busy()">Login</button>
+            <button type="button" (click)="doLogin()" [disabled]="busy()" style="margin-top: 1rem; width: 100%">Login</button>
+            <hr style="margin: 1.5rem 0; border: 1px solid rgba(0,0,0,0.1)">
+            <p style="text-align: center; margin-top: 0">Ainda não tem conta?</p>
+            <button type="button" class="outline" (click)="showRegister = true" style="width: 100%">Criar conta</button>
           </div>
 
-          <div class="card">
-            <h2>Criar conta</h2>
-            <div class="field-grid two">
-              <label>Nome<input [(ngModel)]="registerName" type="text" /></label>
-              <label>E-mail<input [(ngModel)]="registerEmail" type="email" /></label>
-              <label>Telefone<input [(ngModel)]="registerPhone" type="text" /></label>
-              <label>Senha<input [(ngModel)]="registerPassword" type="password" /></label>
+          @if (showRegister) {
+            <div class="modal-backdrop">
+              <div class="modal-content card">
+                <div style="display: flex; justify-content: space-between; align-items: center">
+                  <h2 style="margin:0">Criar conta</h2>
+                  <button type="button" class="icon-btn" (click)="showRegister = false">✕</button>
+                </div>
+                <div class="field-grid two" style="margin-top: 1rem">
+                  <label>Nome<input [(ngModel)]="registerName" type="text" /></label>
+                  <label>E-mail<input [(ngModel)]="registerEmail" type="email" /></label>
+                  <label>Telefone<input [(ngModel)]="registerPhone" type="text" /></label>
+                  <label>Senha<input [(ngModel)]="registerPassword" type="password" /></label>
+                </div>
+                <button type="button" (click)="doRegister()" [disabled]="busy()" style="margin-top: 1rem">Cadastrar</button>
+              </div>
             </div>
-            <button type="button" (click)="doRegister()" [disabled]="busy()">Cadastrar</button>
-          </div>
+          }
         </div>
       }
 
@@ -186,39 +196,46 @@ import { AuthService } from '../core/auth.service';
   `,
   styles: [
     `
-      .customer { background: #230d5c; border: 1px solid rgba(180,80,220,0.28); border-radius: 22px; padding: 1rem; color: #e8d8ff; }
-      h1, h2, h3 { font-family: 'Sora', sans-serif; color: #fff; }
+      .customer { background: #ffffff; border: 1px solid #eaeaea; border-radius: 22px; padding: 1.5rem; color: #444; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+      h1, h2, h3 { font-family: 'Sora', sans-serif; color: #1a0a4a; }
       h1 { margin: 0; }
-      .layout-grid { margin-top: 1rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.85rem; }
-      .metrics { margin-top: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.7rem; }
-      .metrics article, .card { background: rgba(26, 10, 74, 0.92); border: 1px solid rgba(180,80,220,0.35); border-radius: 16px; padding: 0.85rem; color: #e8d8ff; }
-      .metrics p { margin: 0.25rem 0 0; font-size: 1.45rem; font-weight: 800; color: #fff; }
-      .field-grid { display: grid; gap: 0.7rem; }
+      .layout-grid { margin-top: 1rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+      .metrics { margin-top: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.8rem; }
+      .metrics article, .card { background: #ffffff; border: 1px solid #eaeaea; border-radius: 16px; padding: 1.25rem; color: #555; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+      .metrics p { margin: 0.25rem 0 0; font-size: 1.6rem; font-weight: 800; color: #1a0a4a; }
+      .field-grid { display: grid; gap: 0.85rem; }
       .field-grid.two { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
-      label { display: grid; gap: 0.35rem; font-weight: 600; color: #d4baff; }
-      input { background: rgba(255,255,255,0.1); border: 1px solid rgba(180,80,220,0.45); border-radius: 10px; padding: 0.6rem; font: inherit; color: #fff; width: 100%; }
-      input::placeholder { color: rgba(255,255,255,0.4); }
-      button { border: 0; border-radius: 12px; background: #e31e24; color: #fff; padding: 0.65rem 0.9rem; font-weight: 700; cursor: pointer; }
-      .ghost { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
-      .button-row, .header-row { display: flex; gap: 0.6rem; align-items: center; justify-content: space-between; margin-top: 0.8rem; }
-      .scanner { display: none; width: 100%; border-radius: 14px; margin-top: 0.8rem; background: #1f1f1f; aspect-ratio: 4 / 3; object-fit: cover; }
+      label { display: grid; gap: 0.4rem; font-weight: 600; color: #555; font-size: 0.9rem; }
+      input { background: #fdfdfd; border: 1px solid #ddd; border-radius: 10px; padding: 0.65rem; font: inherit; color: #333; width: 100%; transition: border-color 0.2s; }
+      input:focus { outline: none; border-color: #1a0a4a; }
+      input::placeholder { color: #aaa; }
+      button { border: 0; border-radius: 12px; background: #e31e24; color: #fff; padding: 0.75rem 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+      button:hover { opacity: 0.95; transform: translateY(-1px); box-shadow: 0 4px 8px rgba(227, 30, 36, 0.3); }
+      button.outline { background: transparent; color: #e31e24; border: 1px solid #e31e24; }
+      button.outline:hover { background: rgba(227, 30, 36, 0.05); }
+      .ghost { background: #f0f0f0; color: #333; border: 1px solid #ddd; }
+      .ghost:hover { background: #e0e0e0; box-shadow: none; color: #1a0a4a; }
+      .button-row, .header-row { display: flex; gap: 0.75rem; align-items: center; justify-content: space-between; margin-top: 1rem; }
+      .scanner { display: none; width: 100%; border-radius: 14px; margin-top: 1rem; background: #f0f0f0; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid #ddd; }
       .scanner.visible { display: block; }
-      .list { display: grid; gap: 0.55rem; }
-      .list-item { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; background: rgba(255,255,255,0.07); border: 1px solid rgba(180,80,220,0.25); border-radius: 12px; padding: 0.75rem; }
-      .list-item.static span { display: block; font-weight: 700; color: #fff; }
-      .list-item.static small { display: block; color: #c9aaff; }
-      .negative { color: #ff7a7a; }
-      .table-wrap { overflow-x: auto; }
+      .list { display: grid; gap: 0.6rem; }
+      .list-item { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; background: #fafafa; border: 1px solid #eaeaea; border-radius: 12px; padding: 0.85rem; }
+      .list-item.static span { display: block; font-weight: 700; color: #1a0a4a; font-size: 1.05rem; }
+      .list-item.static small { display: block; color: #777; font-size: 0.85rem; }
+      .negative { color: #e31e24; }
+      .table-wrap { overflow-x: auto; background: #fff; border-radius: 12px; border: 1px solid #eaeaea; }
       table { width: 100%; border-collapse: collapse; }
-      th { color: #d4baff; font-size: 0.85rem; }
-      th, td { text-align: left; padding: 0.55rem; border-bottom: 1px solid rgba(180,80,220,0.15); color: #e8d8ff; }
-      .mono { font-family: Consolas, monospace; font-size: 0.84rem; }
-      .message { margin-top: 0.8rem; color: #ff5a5f; font-weight: 700; }
+      th { color: #666; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: #fbfbfb; }
+      th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid #eaeaea; color: #444; }
+      tr:last-child td { border-bottom: none; }
+      .mono { font-family: Consolas, monospace; font-size: 0.85rem; color: #1a0a4a; background: #f4f6f8; padding: 0.2rem 0.4rem; border-radius: 4px; }
+      .message { margin-top: 1rem; color: #e31e24; font-weight: 700; background: rgba(227,30,36,0.1); padding: 0.75rem; border-radius: 8px; }
       @media (max-width: 920px) { .layout-grid { grid-template-columns: 1fr; } }
     `
   ]
 })
 export class CustomerAreaComponent implements OnDestroy {
+  showRegister = false;
   @ViewChild('scannerVideo') scannerVideo?: ElementRef<HTMLVideoElement>;
 
   login = '';

@@ -10,6 +10,8 @@ body {
 
 body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	color: #e8d8ff;
-	background: #1a0a4a;
+	color: #333333;
+	background: #f4f6f8;
 }
+
+.modal-backdrop { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 100; } .modal-content { border-radius: 12px; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important; background: #fff !important; color: #333 !important; } .icon-btn { background: transparent; border: none; font-size: 1.25rem; font-weight: bold; cursor: pointer; color: #555; display: inline; padding: 0.5rem; }

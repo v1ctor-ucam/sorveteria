@@ -29,12 +29,11 @@ import { RouterLink } from '@angular/router';
   styles: [
     `
       .hero {
-        background: linear-gradient(135deg, rgba(227,30,36,0.18) 0%, rgba(100,20,200,0.22) 100%),
-                    rgba(255,255,255,0.06);
-        border: 1px solid rgba(220, 100, 255, 0.22);
+        background: linear-gradient(135deg, rgba(227,30,36,0.05) 0%, rgba(74,22,109,0.05) 100%), #ffffff;
+        border: 1px solid #eaeaea;
         border-radius: 24px;
-        padding: 1.5rem;
-        box-shadow: 0 18px 50px rgba(0,0,0,0.4);
+        padding: 2rem;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.06);
         animation: rise 450ms ease-out;
       }
 
@@ -44,27 +43,29 @@ import { RouterLink } from '@angular/router';
         color: #fff;
         font-size: 0.8rem;
         font-weight: 700;
-        padding: 0.25rem 0.65rem;
+        padding: 0.35rem 0.75rem;
         border-radius: 999px;
       }
 
       h1 {
-        margin: 0.7rem 0;
+        margin: 1rem 0;
         font-family: 'Sora', sans-serif;
-        font-size: clamp(1.7rem, 4vw, 2.7rem);
-        line-height: 1.1;
-        color: #fff;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 1.15;
+        color: #1a0a4a;
       }
 
       .subtitle {
         max-width: 62ch;
-        color: #d4baff;
+        color: #555;
+        font-size: 1.1rem;
+        line-height: 1.6;
       }
 
       .actions {
-        margin-top: 1.2rem;
+        margin-top: 1.5rem;
         display: flex;
-        gap: 0.7rem;
+        gap: 1rem;
         flex-wrap: wrap;
       }
 
@@ -73,39 +74,61 @@ import { RouterLink } from '@angular/router';
         background: #e31e24;
         color: #fff;
         font-weight: 700;
-        padding: 0.7rem 1rem;
+        padding: 0.85rem 1.4rem;
         border-radius: 12px;
+        transition: all 0.2s;
+        box-shadow: 0 4px 10px rgba(227, 30, 36, 0.2);
+      }
+
+      .actions a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(227, 30, 36, 0.3);
       }
 
       .actions a.secondary {
-        background: rgba(255,255,255,0.12);
-        color: #fff;
-        border: 1px solid rgba(255,255,255,0.25);
+        background: #ffffff;
+        color: #1a0a4a;
+        border: 1px solid #ddd;
+        box-shadow: none;
+      }
+
+      .actions a.secondary:hover {
+        border-color: #1a0a4a;
+        background: #fdfdfd;
       }
 
       .grid {
-        margin-top: 1rem;
+        margin-top: 1.5rem;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-        gap: 0.85rem;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
       }
 
       article {
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(180, 80, 220, 0.2);
+        background: #ffffff;
+        border: 1px solid #eaeaea;
         border-radius: 16px;
-        padding: 1rem;
-        color: #e8d8ff;
+        padding: 1.5rem;
+        color: #555;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        transition: transform 0.2s;
+      }
+
+      article:hover {
+        transform: translateY(-3px);
       }
 
       h2 {
         margin: 0;
-        font-size: 1.02rem;
-        color: #fff;
+        font-size: 1.25rem;
+        color: #1a0a4a;
+        font-family: 'Sora', sans-serif;
       }
 
       p {
+        margin-top: 0.5rem;
         margin-bottom: 0;
+        line-height: 1.5;
       }
 
       @keyframes rise {

@@ -1,9 +1,6 @@
 .layout {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 15% 10%, rgba(100, 30, 200, 0.35), transparent 30%),
-    radial-gradient(circle at 85% 20%, rgba(60, 10, 160, 0.4), transparent 28%),
-    linear-gradient(160deg, #1a0a4a 0%, #2d0b6e 50%, #1a1264 100%);
+  background: #f4f6f8;
 }
 
 .topbar {
@@ -15,9 +12,9 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.25rem;
-  background: rgba(26, 10, 74, 0.88);
-  border-bottom: 1px solid rgba(180, 80, 220, 0.25);
-  backdrop-filter: blur(10px);
+  background: #ffffff;
+  border-bottom: 2px solid #e31e24;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .brand {
@@ -44,12 +41,12 @@
   display: flex;
   align-items: center;
   gap: 0.55rem;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(180,80,220, 0.3);
+  background: #f4f6f8;
+  border: 1px solid #ddd;
   border-radius: 999px;
   padding: 0.35rem 0.35rem 0.35rem 0.75rem;
   font-size: 0.85rem;
-  color: #e8d8ff;
+  color: #333;
 }
 
 .session-chip button {
@@ -63,7 +60,7 @@
 
 .menu a {
   text-decoration: none;
-  color: #c9aaff;
+  color: #4a166d;
   padding: 0.45rem 0.75rem;
   border-radius: 999px;
   font-weight: 600;
@@ -71,8 +68,8 @@
 
 .menu a.active,
 .menu a:hover {
-  background: rgba(180, 80, 220, 0.22);
-  color: #fff;
+  background: rgba(74, 22, 109, 0.1);
+  color: #e31e24;
 }
 
 .content {

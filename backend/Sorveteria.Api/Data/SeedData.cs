@@ -7,7 +7,6 @@ public static class SeedData
 {
     public static async Task EnsureSeedAsync(AppDbContext dbContext)
     {
-        await dbContext.Database.MigrateAsync();
 
         if (!await dbContext.Employees.AnyAsync())
         {

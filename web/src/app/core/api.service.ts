@@ -23,7 +23,7 @@ import { AuthService } from './auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private readonly apiBase = 'http://localhost:5000/api';
+  private readonly apiBase = '/api';
 
   constructor(
     private readonly http: HttpClient,

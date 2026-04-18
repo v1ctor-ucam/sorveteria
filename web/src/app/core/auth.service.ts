@@ -12,7 +12,7 @@ interface TokenPayload {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private readonly apiBase = 'http://localhost:5000/api';
+  private readonly apiBase = '/api';
   private readonly storageKey = 'fideliza.auth';
   private readonly authState = signal<AuthResponse | null>(this.readFromStorage());
   private readonly userIdState = signal<string | null>(this.readUserIdFromToken(this.authState()?.token ?? null));

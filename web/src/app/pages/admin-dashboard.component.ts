@@ -405,6 +405,18 @@ import { AuthService } from '../core/auth.service';
     .message { margin-top: 1rem; color: #e31e24; font-weight: 700; background: rgba(227,30,36,0.1); padding: 0.75rem; border-radius: 8px; }
     .auth-box { max-width: 420px; margin: 2rem auto; }
     @media (max-width: 920px) { .layout-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) {
+      .panel { padding: 1rem; border-radius: 12px; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .field-grid.two { grid-template-columns: 1fr; }
+      .toolbar button, .tabs button { flex: 1 1 auto; text-align: center; }
+      .product-grid { grid-template-columns: 1fr; display: grid; }
+      .button-row, .header-row { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+      .button-row button, .header-row select, .header-row button { width: 100%; box-sizing: border-box; }
+      .header-row div { width: 100%; flex-direction: column; align-items: stretch; gap: 0.5rem; }
+      .list-item { flex-direction: column; align-items: flex-start; text-align: left; }
+      .list-item small { margin-top: 0.25rem; }
+    }
     `
   ]
 })

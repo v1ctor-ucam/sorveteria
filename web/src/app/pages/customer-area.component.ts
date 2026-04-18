@@ -231,6 +231,15 @@ import { AuthService } from '../core/auth.service';
       .mono { font-family: Consolas, monospace; font-size: 0.85rem; color: #333; background: #f4f6f8; padding: 0.2rem 0.4rem; border-radius: 4px; }
       .message { margin-top: 1rem; color: #e31e24; font-weight: 700; background: rgba(227,30,36,0.1); padding: 0.75rem; border-radius: 8px; }
       @media (max-width: 920px) { .layout-grid { grid-template-columns: 1fr; } }
+      @media (max-width: 600px) {
+        .customer { padding: 1rem; border-radius: 12px; }
+        .metrics { grid-template-columns: 1fr 1fr; }
+        .button-row { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+        .button-row button { width: 100%; }
+        .field-grid.two { grid-template-columns: 1fr; }
+        .list-item { flex-direction: column; align-items: flex-start; }
+        .list-item button, .list-item strong { align-self: flex-start; margin-top: 0.25rem; }
+      }
     `
   ]
 })

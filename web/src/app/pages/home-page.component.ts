@@ -141,6 +141,32 @@ import { RouterLink } from '@angular/router';
           transform: translateY(0);
         }
       }
+
+      @media (max-width: 600px) {
+        .hero {
+          padding: 1.25rem;
+          border-radius: 16px;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        .actions {
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        .actions a {
+          width: 100%;
+          text-align: center;
+          padding: 1rem;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
     `
   ]
 })

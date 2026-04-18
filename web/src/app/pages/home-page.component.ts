@@ -52,7 +52,7 @@ import { RouterLink } from '@angular/router';
         font-family: 'Sora', sans-serif;
         font-size: clamp(2rem, 5vw, 3.2rem);
         line-height: 1.15;
-        color: #1a0a4a;
+        color: #333;
       }
 
       .subtitle {
@@ -87,13 +87,13 @@ import { RouterLink } from '@angular/router';
 
       .actions a.secondary {
         background: #ffffff;
-        color: #1a0a4a;
+        color: #333;
         border: 1px solid #ddd;
         box-shadow: none;
       }
 
       .actions a.secondary:hover {
-        border-color: #1a0a4a;
+        border-color: #ccc;
         background: #fdfdfd;
       }
 
@@ -121,7 +121,7 @@ import { RouterLink } from '@angular/router';
       h2 {
         margin: 0;
         font-size: 1.25rem;
-        color: #1a0a4a;
+        color: #333;
         font-family: 'Sora', sans-serif;
       }
 

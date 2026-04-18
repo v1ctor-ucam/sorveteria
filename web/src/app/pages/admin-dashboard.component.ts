@@ -358,23 +358,23 @@ import { AuthService } from '../core/auth.service';
   `,
   styles: [
     `    .panel { background: #ffffff; border-radius: 22px; border: 1px solid #eaeaea; padding: 1rem; color: #333; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
-    h1 { margin: 0; font-family: 'Sora', sans-serif; color: #1a0a4a; }
-    h2, h3 { margin-top: 0; font-family: 'Sora', sans-serif; color: #1a0a4a; }
+    h1 { margin: 0; font-family: 'Sora', sans-serif; color: #333; }
+    h2, h3 { margin-top: 0; font-family: 'Sora', sans-serif; color: #333; }
     .toolbar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
     .toolbar button, .tabs button, .ghost, .card button { border: 0; border-radius: 12px; padding: 0.65rem 0.9rem; font-weight: 700; background: #e31e24; color: #fff; cursor: pointer; transition: all 0.2s; }
     .toolbar button:hover, .card button:hover { opacity: 0.95; transform: translateY(-1px); box-shadow: 0 4px 8px rgba(227, 30, 36, 0.3); }
     .toolbar button.active { background: #9b0f13; }
-    .ghost { background: transparent; color: #1a0a4a; border: 1px solid #1a0a4a; }
-    .ghost:hover { background: rgba(26, 10, 74, 0.05); }
+    .ghost { background: transparent; color: #e31e24; border: 1px solid #e31e24; }
+    .ghost:hover { background: rgba(227, 30, 36, 0.05); }
     .metrics { margin-top: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.7rem; }
     .metrics article, .card { background: #ffffff; border: 1px solid #eaeaea; border-radius: 16px; padding: 1.25rem; color: #555; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
-    .metrics p { margin: 0.25rem 0 0; font-size: 1.7rem; font-weight: 800; color: #1a0a4a; }
+    .metrics p { margin: 0.25rem 0 0; font-size: 1.7rem; font-weight: 800; color: #333; }
     .layout-grid { margin-top: 1rem; display: grid; grid-template-columns: 1.4fr 1fr; gap: 1rem; }
     .field-grid { display: grid; gap: 0.8rem; }
     .field-grid.two { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
     label { display: grid; gap: 0.4rem; font-weight: 600; color: #444; font-size: 0.9rem; }
     input, select { width: 100%; background: #fdfdfd; border: 1px solid #ddd; border-radius: 10px; padding: 0.65rem; font: inherit; color: #333; transition: border-color 0.2s; }
-    input:focus, select:focus { outline: none; border-color: #1a0a4a; }
+    input:focus, select:focus { outline: none; border-color: #e31e24; }
     input::placeholder { color: #aaa; }
     option { background: #fff; color: #333; }
     .check { display: flex; align-items: center; gap: 0.55rem; flex-direction: row; }
@@ -387,7 +387,7 @@ import { AuthService } from '../core/auth.service';
     .qty-row { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.7rem; }
     .qty-btn { padding: 0.35rem 0.75rem; border-radius: 8px; font-size: 1.1rem; min-width: 2.2rem; background: #eaeaea; color: #333; border: none; font-weight: bold; cursor: pointer; }
     .qty-btn:hover { background: #ddd; }
-    .qty-val { min-width: 2rem; text-align: center; font-weight: 700; font-size: 1.1rem; color: #1a0a4a; }
+    .qty-val { min-width: 2rem; text-align: center; font-weight: 700; font-size: 1.1rem; color: #333; }
     .summary-row, .header-row, .button-row { margin-top: 1rem; display: flex; gap: 0.75rem; align-items: center; justify-content: space-between; }
     .qr-image { width: min(100%, 280px); display: block; margin: 0 auto 1rem; border-radius: 12px; background: #fff; padding: 0.5rem; border: 1px solid #eaeaea; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
     .table-wrap { overflow-x: auto; background: #fff; border-radius: 12px; border: 1px solid #eaeaea; }
@@ -395,12 +395,12 @@ import { AuthService } from '../core/auth.service';
     th { color: #666; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: #fbfbfb; }
     th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid #eaeaea; vertical-align: middle; color: #444; }
     tr:last-child td { border-bottom: none; }
-    .mono { font-family: Consolas, monospace; font-size: 0.85rem; color: #1a0a4a; background: #f4f6f8; padding: 0.2rem 0.4rem; border-radius: 4px; }
+    .mono { font-family: Consolas, monospace; font-size: 0.85rem; color: #333; background: #f4f6f8; padding: 0.2rem 0.4rem; border-radius: 4px; }
     .list { display: grid; gap: 0.6rem; }
     .list-item { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; text-align: left; width: 100%; background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; padding: 0.85rem 1rem; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
     .list-item:hover:not(.static) { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,0.06); border-color: #ddd; }
     .list-item.static { cursor: default; }
-    .list-item span { display: block; font-weight: 700; color: #1a0a4a; font-size: 1.05rem; margin-bottom: 0.2rem; }
+    .list-item span { display: block; font-weight: 700; color: #333; font-size: 1.05rem; margin-bottom: 0.2rem; }
     .list-item small { display: block; color: #777; font-size: 0.85rem; }
     .message { margin-top: 1rem; color: #e31e24; font-weight: 700; background: rgba(227,30,36,0.1); padding: 0.75rem; border-radius: 8px; }
     .auth-box { max-width: 420px; margin: 2rem auto; }

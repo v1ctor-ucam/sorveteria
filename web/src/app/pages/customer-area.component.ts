@@ -197,30 +197,30 @@ import { AuthService } from '../core/auth.service';
   styles: [
     `
       .customer { background: #ffffff; border: 1px solid #eaeaea; border-radius: 22px; padding: 1.5rem; color: #444; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
-      h1, h2, h3 { font-family: 'Sora', sans-serif; color: #1a0a4a; }
+      h1, h2, h3 { font-family: 'Sora', sans-serif; color: #333; }
       h1 { margin: 0; }
       .layout-grid { margin-top: 1rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
       .metrics { margin-top: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.8rem; }
       .metrics article, .card { background: #ffffff; border: 1px solid #eaeaea; border-radius: 16px; padding: 1.25rem; color: #555; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
-      .metrics p { margin: 0.25rem 0 0; font-size: 1.6rem; font-weight: 800; color: #1a0a4a; }
+      .metrics p { margin: 0.25rem 0 0; font-size: 1.6rem; font-weight: 800; color: #333; }
       .field-grid { display: grid; gap: 0.85rem; }
       .field-grid.two { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
       label { display: grid; gap: 0.4rem; font-weight: 600; color: #555; font-size: 0.9rem; }
       input { background: #fdfdfd; border: 1px solid #ddd; border-radius: 10px; padding: 0.65rem; font: inherit; color: #333; width: 100%; transition: border-color 0.2s; }
-      input:focus { outline: none; border-color: #1a0a4a; }
+      input:focus { outline: none; border-color: #e31e24; }
       input::placeholder { color: #aaa; }
       button { border: 0; border-radius: 12px; background: #e31e24; color: #fff; padding: 0.75rem 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
       button:hover { opacity: 0.95; transform: translateY(-1px); box-shadow: 0 4px 8px rgba(227, 30, 36, 0.3); }
       button.outline { background: transparent; color: #e31e24; border: 1px solid #e31e24; }
       button.outline:hover { background: rgba(227, 30, 36, 0.05); }
       .ghost { background: #f0f0f0; color: #333; border: 1px solid #ddd; }
-      .ghost:hover { background: #e0e0e0; box-shadow: none; color: #1a0a4a; }
+      .ghost:hover { background: #e0e0e0; box-shadow: none; color: #333; }
       .button-row, .header-row { display: flex; gap: 0.75rem; align-items: center; justify-content: space-between; margin-top: 1rem; }
       .scanner { display: none; width: 100%; border-radius: 14px; margin-top: 1rem; background: #f0f0f0; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid #ddd; }
       .scanner.visible { display: block; }
       .list { display: grid; gap: 0.6rem; }
       .list-item { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; background: #fafafa; border: 1px solid #eaeaea; border-radius: 12px; padding: 0.85rem; }
-      .list-item.static span { display: block; font-weight: 700; color: #1a0a4a; font-size: 1.05rem; }
+      .list-item.static span { display: block; font-weight: 700; color: #333; font-size: 1.05rem; }
       .list-item.static small { display: block; color: #777; font-size: 0.85rem; }
       .negative { color: #e31e24; }
       .table-wrap { overflow-x: auto; background: #fff; border-radius: 12px; border: 1px solid #eaeaea; }
@@ -228,7 +228,7 @@ import { AuthService } from '../core/auth.service';
       th { color: #666; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: #fbfbfb; }
       th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid #eaeaea; color: #444; }
       tr:last-child td { border-bottom: none; }
-      .mono { font-family: Consolas, monospace; font-size: 0.85rem; color: #1a0a4a; background: #f4f6f8; padding: 0.2rem 0.4rem; border-radius: 4px; }
+      .mono { font-family: Consolas, monospace; font-size: 0.85rem; color: #333; background: #f4f6f8; padding: 0.2rem 0.4rem; border-radius: 4px; }
       .message { margin-top: 1rem; color: #e31e24; font-weight: 700; background: rgba(227,30,36,0.1); padding: 0.75rem; border-radius: 8px; }
       @media (max-width: 920px) { .layout-grid { grid-template-columns: 1fr; } }
     `
